@@ -23,8 +23,7 @@ const headers = (fileName: string) => {
 
 @Injectable()
 export class UFOService {
-  constructor(private readonly configService: ConfigService) {}
-  async uploadToOSS(file: Express.Multer.File): Promise<string> {
+  constructor(private readonly configService: ConfigService) {
     const accessKeyId =
       this.configService.get<string | undefined>('OSS_ACCESS_KEY_ID') || '';
     const accessKeySecret =
@@ -35,19 +34,22 @@ export class UFOService {
       this.configService.get<string | undefined>('OSS_ENDPOINT') || '';
     const region =
       this.configService.get<string | undefined>('OSS_REGION') || '';
-
+    this.ossOptions = {
+      accessKeyId,
+      accessKeySecret,
+      bucket,
+      endpoint,
+      region,
+    };
+  }
+  private ossOptions: OSS.Options;
+  async uploadToOSS(file: Express.Multer.File): Promise<string> {
     if (!Object.hasOwnProperty.call(file, 'buffer')) {
       throw new Error('Invalid file or buffer missing');
     }
 
     // 显式声明 client 类型
-    const client = new OSS({
-      region,
-      accessKeyId,
-      accessKeySecret,
-      bucket,
-      endpoint,
-    });
+    const client = new OSS(this.ossOptions);
     // 为文件创建本地临时路径
     const fileSourcePath = await createTempFilePathForBuffer(
       file.buffer,
@@ -63,5 +65,10 @@ export class UFOService {
       headers: headers(file.originalname),
     });
     return client.signatureUrl(result.name); // 返回文件的访问地址
+  }
+  getFilePath(filePath: string): string {
+    const client = new OSS(this.ossOptions);
+    const result = client.signatureUrl(filePath);
+    return result; // 返回文件的访问地址
   }
 }
