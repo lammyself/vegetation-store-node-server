@@ -1,10 +1,17 @@
+import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { VegetationPhoto } from './moudules/vegetationPhoto/vp.module';
+import { commonModule } from './moudules/common/common.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      // 启用环境变量配置
+      envFilePath: '.env.local', // 指定.env文件路径
+      isGlobal: true, // 可选：将 ConfigModule 设为全局可用
+    }),
+    VegetationPhoto,
+    commonModule,
+  ],
 })
 export class AppModule {}
