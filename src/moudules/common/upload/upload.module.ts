@@ -5,5 +5,6 @@ import { UFOService } from './upload.service';
   imports: [],
   controllers: [UFOController],
   providers: [UFOService],
+  exports: [UFOService],
 })
 export class uploadModule {}

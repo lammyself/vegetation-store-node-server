@@ -6,5 +6,6 @@ import { CommonController } from './common.controller';
 @Module({
   imports: [uploadModule],
   controllers: [CommonController],
+  exports: [uploadModule],
 })
 export class commonModule {}

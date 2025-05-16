@@ -1,5 +1,4 @@
 import * as OSS from 'ali-oss';
-// const OSS = require('ali-oss');
 import { Injectable } from '@nestjs/common';
 import { createTempFilePathForBuffer } from 'src/lib/fileHandle';
 import { ConfigService } from '@nestjs/config';
@@ -70,5 +69,11 @@ export class UFOService {
     const client = new OSS(this.ossOptions);
     const result = client.signatureUrl(filePath);
     return result; // 返回文件的访问地址
+  }
+  // 下载文件
+  async downloadFile(filePath: string): Promise<Buffer> {
+    const client = new OSS(this.ossOptions);
+    const result = await client.get(filePath);
+    return result.content as Buffer; // 返回文件的二进制数据
   }
 }
