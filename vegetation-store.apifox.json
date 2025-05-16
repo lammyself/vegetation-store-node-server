@@ -1,0 +1,977 @@
+{
+  "apifoxProject": "1.0.0",
+  "$schema": {
+    "app": "apifox",
+    "type": "project",
+    "version": "1.2.0"
+  },
+  "info": {
+    "name": "vegetation-store",
+    "description": "",
+    "mockRule": {
+      "rules": [],
+      "enableSystemRule": true
+    }
+  },
+  "apiCollection": [
+    {
+      "name": "根目录",
+      "id": 56785627,
+      "auth": {},
+      "securityScheme": {},
+      "parentId": 0,
+      "serverId": "",
+      "description": "",
+      "identityPattern": {
+        "httpApi": {
+          "type": "methodAndPath",
+          "bodyType": "",
+          "fields": []
+        }
+      },
+      "shareSettings": {},
+      "visibility": "SHARED",
+      "preProcessors": [
+        {
+          "id": "inheritProcessors",
+          "type": "inheritProcessors",
+          "data": {}
+        }
+      ],
+      "postProcessors": [
+        {
+          "id": "inheritProcessors",
+          "type": "inheritProcessors",
+          "data": {}
+        }
+      ],
+      "inheritPostProcessors": {},
+      "inheritPreProcessors": {},
+      "items": [
+        {
+          "name": "common",
+          "id": 56810946,
+          "auth": {},
+          "securityScheme": {},
+          "parentId": 0,
+          "serverId": "",
+          "description": "公共模块",
+          "identityPattern": {
+            "httpApi": {
+              "type": "inherit",
+              "bodyType": ""
+            }
+          },
+          "shareSettings": {},
+          "visibility": "INHERITED",
+          "preProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "postProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "inheritPostProcessors": {},
+          "inheritPreProcessors": {},
+          "items": [
+            {
+              "name": "upload",
+              "id": 56830600,
+              "auth": {},
+              "securityScheme": {},
+              "parentId": 56810946,
+              "serverId": "",
+              "description": "",
+              "identityPattern": {
+                "httpApi": {
+                  "type": "inherit",
+                  "bodyType": "",
+                  "fields": []
+                }
+              },
+              "shareSettings": {},
+              "visibility": "INHERITED",
+              "preProcessors": [
+                {
+                  "id": "inheritProcessors",
+                  "type": "inheritProcessors",
+                  "data": {}
+                }
+              ],
+              "postProcessors": [
+                {
+                  "id": "inheritProcessors",
+                  "type": "inheritProcessors",
+                  "data": {}
+                }
+              ],
+              "inheritPostProcessors": {},
+              "inheritPreProcessors": {},
+              "items": [
+                {
+                  "name": "上传到oss",
+                  "api": {
+                    "id": "296420997",
+                    "method": "post",
+                    "path": "/upload/oss",
+                    "parameters": {},
+                    "auth": {},
+                    "securityScheme": {},
+                    "commonParameters": {
+                      "query": [],
+                      "body": [],
+                      "cookie": [],
+                      "header": []
+                    },
+                    "responses": [
+                      {
+                        "id": "676456174",
+                        "code": 200,
+                        "name": "成功",
+                        "headers": [],
+                        "jsonSchema": {
+                          "type": "object",
+                          "x-apifox-refs": {
+                            "01JVA9YA8DAFF42PS52TMD0T7H": {
+                              "$ref": "#/definitions/168581477",
+                              "x-apifox-overrides": {
+                                "data": {
+                                  "type": "string",
+                                  "title": "文件地址",
+                                  "description": "签名后的地址"
+                                }
+                              },
+                              "required": [
+                                "data"
+                              ]
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "01JVA9YA8DAFF42PS52TMD0T7H"
+                          ],
+                          "properties": {}
+                        },
+                        "description": "",
+                        "contentType": "json",
+                        "mediaType": "",
+                        "oasExtensions": ""
+                      }
+                    ],
+                    "responseExamples": [],
+                    "requestBody": {
+                      "type": "multipart/form-data",
+                      "parameters": [
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "file",
+                          "id": "ZU4HgOG0GY",
+                          "example": "file:///Users/yanjunhua/Downloads/png背景.png",
+                          "enable": true,
+                          "name": "file"
+                        }
+                      ],
+                      "mediaType": "",
+                      "examples": [],
+                      "oasExtensions": ""
+                    },
+                    "description": "",
+                    "tags": [],
+                    "status": "developing",
+                    "serverId": "",
+                    "operationId": "",
+                    "sourceUrl": "",
+                    "ordering": 10,
+                    "cases": [],
+                    "mocks": [],
+                    "customApiFields": "{}",
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "mockScript": {},
+                    "codeSamples": [],
+                    "commonResponseStatus": {},
+                    "responseChildren": [
+                      "BLANK.676456174"
+                    ],
+                    "visibility": "INHERITED",
+                    "oasExtensions": "",
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessors": {}
+                  }
+                },
+                {
+                  "name": "为oss文件地址签名",
+                  "api": {
+                    "id": "296526454",
+                    "method": "get",
+                    "path": "/upload/getFilePath",
+                    "parameters": {
+                      "query": [
+                        {
+                          "required": false,
+                          "description": "oss上文件路径",
+                          "type": "string",
+                          "id": "337cWbzLAJ",
+                          "example": "/tem/vegetation-store-66492598fbb46-png背景.png",
+                          "enable": true,
+                          "name": "filePath"
+                        }
+                      ]
+                    },
+                    "auth": {},
+                    "securityScheme": {},
+                    "commonParameters": {
+                      "query": [],
+                      "body": [],
+                      "cookie": [],
+                      "header": []
+                    },
+                    "responses": [
+                      {
+                        "id": "676645160",
+                        "code": 200,
+                        "name": "成功",
+                        "headers": [],
+                        "jsonSchema": {
+                          "type": "object",
+                          "x-apifox-refs": {
+                            "01JVA9WC4Y3KTH3JQ8X76XWYM5": {
+                              "$ref": "#/definitions/168581477",
+                              "x-apifox-overrides": {
+                                "data": {
+                                  "type": "string",
+                                  "title": "地址",
+                                  "description": "签名后的地址"
+                                }
+                              },
+                              "required": [
+                                "data"
+                              ]
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "01JVA9WC4Y3KTH3JQ8X76XWYM5"
+                          ],
+                          "properties": {}
+                        },
+                        "description": "",
+                        "contentType": "json",
+                        "mediaType": "",
+                        "oasExtensions": ""
+                      }
+                    ],
+                    "responseExamples": [],
+                    "requestBody": {
+                      "type": "none",
+                      "parameters": [],
+                      "mediaType": "",
+                      "examples": [],
+                      "oasExtensions": ""
+                    },
+                    "description": "",
+                    "tags": [],
+                    "status": "developing",
+                    "serverId": "",
+                    "operationId": "",
+                    "sourceUrl": "",
+                    "ordering": 20,
+                    "cases": [],
+                    "mocks": [],
+                    "customApiFields": "{}",
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "mockScript": {},
+                    "codeSamples": [],
+                    "commonResponseStatus": {},
+                    "responseChildren": [
+                      "BLANK.676645160"
+                    ],
+                    "visibility": "INHERITED",
+                    "oasExtensions": "",
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessors": {}
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "vegetation-photo",
+          "id": 56883383,
+          "auth": {},
+          "securityScheme": {},
+          "parentId": 0,
+          "serverId": "",
+          "description": "",
+          "identityPattern": {
+            "httpApi": {
+              "type": "inherit",
+              "bodyType": "",
+              "fields": []
+            }
+          },
+          "shareSettings": {},
+          "visibility": "INHERITED",
+          "preProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "postProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "inheritPostProcessors": {},
+          "inheritPreProcessors": {},
+          "items": [
+            {
+              "name": "生成图片中植物特征解析",
+              "api": {
+                "id": "296830131",
+                "method": "get",
+                "path": "/vegetation-photo/parse",
+                "parameters": {
+                  "query": [
+                    {
+                      "required": false,
+                      "description": "oss上图片地址",
+                      "type": "string",
+                      "id": "pQSwCb0Ar8",
+                      "enable": true,
+                      "name": "filePath",
+                      "example": "/tem/vegetation-store-1bee180a7292f-png%E8%83%8C%E6%99%AF.png"
+                    },
+                    {
+                      "required": false,
+                      "description": "用户对图片的描述",
+                      "type": "string",
+                      "id": "6eEahXUdbX",
+                      "enable": true,
+                      "name": "prompt",
+                      "example": "这是一个桐树，但是不知道具体种类。"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "677193455",
+                    "code": 200,
+                    "name": "成功",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "x-apifox-refs": {
+                        "01JVBYEZD7TT6937TR5D58CPCH": {
+                          "$ref": "#/definitions/168581477",
+                          "x-apifox-overrides": {
+                            "data": {
+                              "type": "string",
+                              "title": "响应内容",
+                              "description": "Base64图片"
+                            }
+                          },
+                          "required": [
+                            "data"
+                          ]
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "01JVBYEZD7TT6937TR5D58CPCH"
+                      ],
+                      "properties": {}
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [],
+                "status": "developing",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 10,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.677193455"
+                ],
+                "visibility": "INHERITED",
+                "oasExtensions": "",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "socketCollection": [],
+  "docCollection": [],
+  "webSocketCollection": [],
+  "socketIOCollection": [],
+  "responseCollection": [
+    {
+      "_databaseId": 6664887,
+      "updatedAt": "2025-05-15T06:55:05.000Z",
+      "name": "根目录",
+      "type": "root",
+      "children": [],
+      "parentId": 0,
+      "id": 6664887,
+      "items": [
+        {
+          "_databaseId": 340992887,
+          "name": "记录不存在",
+          "code": 404,
+          "contentType": "json",
+          "jsonSchema": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer"
+              },
+              "message": {
+                "type": "string",
+                "mock": {
+                  "mock": "Not found"
+                }
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ],
+            "x-apifox-orders": [
+              "code",
+              "message"
+            ]
+          },
+          "defaultEnable": false,
+          "folderId": 0,
+          "id": 340992887,
+          "databaseResponseExamples": [],
+          "responseExamples": []
+        },
+        {
+          "_databaseId": 340992888,
+          "name": "参数不正确",
+          "code": 400,
+          "contentType": "json",
+          "jsonSchema": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "mock": {
+                  "mock": "400"
+                }
+              },
+              "message": {
+                "type": "string",
+                "mock": {
+                  "mock": "Invalid input"
+                }
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ],
+            "x-apifox-orders": [
+              "code",
+              "message"
+            ]
+          },
+          "defaultEnable": false,
+          "folderId": 0,
+          "id": 340992888,
+          "databaseResponseExamples": [],
+          "responseExamples": []
+        }
+      ]
+    }
+  ],
+  "schemaCollection": [
+    {
+      "id": 14361730,
+      "name": "根目录",
+      "visibility": "SHARED",
+      "items": [
+        {
+          "name": "请求成功响应包装",
+          "displayName": "",
+          "id": "#/definitions/168581477",
+          "description": "",
+          "schema": {
+            "jsonSchema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": [
+                    "string",
+                    "integer",
+                    "boolean",
+                    "array",
+                    "object",
+                    "number",
+                    "null"
+                  ],
+                  "title": "响应内容"
+                },
+                "code": {
+                  "type": "integer",
+                  "title": "响应状态码"
+                },
+                "message": {
+                  "type": "string",
+                  "title": "执行结果信息"
+                },
+                "success": {
+                  "type": "boolean",
+                  "title": "成功状态"
+                }
+              },
+              "required": [
+                "data",
+                "code",
+                "message",
+                "success"
+              ],
+              "x-apifox-orders": [
+                "data",
+                "code",
+                "message",
+                "success"
+              ]
+            }
+          },
+          "visibility": "INHERITED"
+        }
+      ]
+    }
+  ],
+  "securitySchemeCollection": [
+    {
+      "id": 1094603,
+      "name": "根目录",
+      "items": [],
+      "ordering": []
+    }
+  ],
+  "requestCollection": [
+    {
+      "name": "根目录",
+      "children": [],
+      "ordering": [
+        "requestFolder.6766417"
+      ],
+      "items": []
+    }
+  ],
+  "apiTestCaseCollection": [
+    {
+      "name": "根目录",
+      "children": [
+        {
+          "name": "宠物店",
+          "children": [],
+          "items": [
+            {
+              "steps": [
+                {
+                  "type": "http",
+                  "bind": false,
+                  "bindType": "API",
+                  "bindId": 296282474,
+                  "syncMode": "MANUAL",
+                  "httpApiCase": {
+                    "id": 261445691,
+                    "name": "新建在售宠物",
+                    "method": "",
+                    "path": "/pet",
+                    "auth": {},
+                    "type": "http",
+                    "options": {},
+                    "parameters": {},
+                    "responseId": 676214485,
+                    "requestBody": {
+                      "parameters": [
+                        {
+                          "id": "ybPpcZ1dgw",
+                          "relatedId": "ybPpcZ1dgw",
+                          "relatedName": "name",
+                          "name": "name",
+                          "value": "Hello Kitty",
+                          "type": "string",
+                          "description": "宠物名",
+                          "enable": true
+                        },
+                        {
+                          "id": "fDkEuKyzG4",
+                          "relatedId": "fDkEuKyzG4",
+                          "relatedName": "status",
+                          "name": "status",
+                          "value": "sold",
+                          "type": "string",
+                          "description": "宠物销售状态",
+                          "enable": true
+                        }
+                      ],
+                      "type": "application/x-www-form-urlencoded",
+                      "data": ""
+                    },
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "commonParameters": {},
+                    "inheritPreProcessors": {},
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessorsSnapshot": null,
+                    "inheritPostProcessorsSnapshot": null,
+                    "apiId": 296282474
+                  }
+                },
+                {
+                  "type": "http",
+                  "bind": false,
+                  "bindType": "API",
+                  "bindId": 296282473,
+                  "syncMode": "MANUAL",
+                  "httpApiCase": {
+                    "id": 261445690,
+                    "name": "查询刚刚建的宠物",
+                    "method": "",
+                    "path": "/pet/{petId}",
+                    "auth": {},
+                    "type": "http",
+                    "options": {},
+                    "parameters": {
+                      "path": [
+                        {
+                          "id": "petId#0",
+                          "relatedId": "petId#0",
+                          "relatedName": "petId",
+                          "name": "petId",
+                          "value": "{{petId}}",
+                          "type": "string",
+                          "description": "宠物 ID",
+                          "enable": true
+                        }
+                      ]
+                    },
+                    "responseId": 676214484,
+                    "requestBody": {
+                      "parameters": [],
+                      "type": "none"
+                    },
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "commonParameters": {},
+                    "inheritPreProcessors": {},
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessorsSnapshot": null,
+                    "inheritPostProcessorsSnapshot": null,
+                    "apiId": 296282473
+                  }
+                },
+                {
+                  "type": "http",
+                  "bind": false,
+                  "bindType": "API",
+                  "bindId": 296282475,
+                  "syncMode": "MANUAL",
+                  "httpApiCase": {
+                    "id": 261445689,
+                    "name": "修改宠物状态为 sold",
+                    "method": "",
+                    "path": "/pet",
+                    "auth": {},
+                    "type": "http",
+                    "options": {},
+                    "parameters": {},
+                    "responseId": 676214487,
+                    "requestBody": {
+                      "parameters": [],
+                      "type": "application/json",
+                      "data": "{\n    \"name\": \"test\"\n}"
+                    },
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "commonParameters": {},
+                    "inheritPreProcessors": {},
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessorsSnapshot": null,
+                    "inheritPostProcessorsSnapshot": null,
+                    "apiId": 296282475
+                  }
+                },
+                {
+                  "type": "http",
+                  "bind": false,
+                  "bindType": "API",
+                  "bindId": 296282473,
+                  "syncMode": "MANUAL",
+                  "httpApiCase": {
+                    "id": 261445688,
+                    "name": "查询宠物状态是否修改成功",
+                    "method": "",
+                    "path": "/pet/{petId}",
+                    "auth": {},
+                    "type": "http",
+                    "options": {},
+                    "parameters": {
+                      "path": [
+                        {
+                          "id": "petId#0",
+                          "relatedId": "petId#0",
+                          "relatedName": "petId",
+                          "name": "petId",
+                          "value": "2",
+                          "type": "string",
+                          "description": "宠物 ID",
+                          "enable": true
+                        }
+                      ]
+                    },
+                    "responseId": 676214484,
+                    "requestBody": {
+                      "parameters": [],
+                      "type": "none"
+                    },
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "commonParameters": {},
+                    "inheritPreProcessors": {},
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessorsSnapshot": null,
+                    "inheritPostProcessorsSnapshot": null,
+                    "apiId": 296282473
+                  }
+                },
+                {
+                  "type": "http",
+                  "bind": false,
+                  "bindType": "API",
+                  "bindId": 296282476,
+                  "syncMode": "MANUAL",
+                  "httpApiCase": {
+                    "id": 261445687,
+                    "name": "删除该宠物",
+                    "method": "",
+                    "path": "/pet/{petId}",
+                    "auth": {},
+                    "type": "http",
+                    "options": {},
+                    "parameters": {
+                      "header": [
+                        {
+                          "id": "tnoT7O2PBd",
+                          "relatedId": "tnoT7O2PBd",
+                          "relatedName": "api_key",
+                          "name": "api_key",
+                          "enable": true
+                        }
+                      ],
+                      "path": [
+                        {
+                          "id": "petId#0",
+                          "relatedId": "petId#0",
+                          "relatedName": "petId",
+                          "name": "petId",
+                          "value": "",
+                          "enable": true
+                        }
+                      ]
+                    },
+                    "responseId": 676214489,
+                    "requestBody": {
+                      "parameters": [],
+                      "type": "none"
+                    },
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "commonParameters": {},
+                    "inheritPreProcessors": {},
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessorsSnapshot": null,
+                    "inheritPostProcessorsSnapshot": null,
+                    "apiId": 296282476
+                  }
+                },
+                {
+                  "type": "http",
+                  "bind": false,
+                  "bindType": "API",
+                  "bindId": 296282473,
+                  "syncMode": "MANUAL",
+                  "httpApiCase": {
+                    "id": 261445686,
+                    "name": "检查删除是否成功",
+                    "method": "",
+                    "path": "/pet/{petId}",
+                    "auth": {},
+                    "type": "http",
+                    "options": {},
+                    "parameters": {
+                      "path": [
+                        {
+                          "id": "petId#0",
+                          "relatedId": "petId#0",
+                          "relatedName": "petId",
+                          "name": "petId",
+                          "value": "1645646",
+                          "type": "string",
+                          "description": "宠物 ID",
+                          "enable": true
+                        }
+                      ]
+                    },
+                    "responseId": 340992887,
+                    "requestBody": {
+                      "parameters": [],
+                      "type": "none"
+                    },
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "commonParameters": {},
+                    "inheritPreProcessors": {},
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessorsSnapshot": null,
+                    "inheritPostProcessorsSnapshot": null,
+                    "apiId": 296282473
+                  }
+                }
+              ],
+              "id": 6535356,
+              "name": "测试宠物新建/修改/删除流程",
+              "tags": [],
+              "options": {},
+              "priority": 2,
+              "ordering": 0,
+              "description": "",
+              "preProcessors": [],
+              "postProcessors": [],
+              "children": [],
+              "performanceTestOptions": {},
+              "apiTestDataSets": []
+            }
+          ]
+        }
+      ],
+      "items": []
+    }
+  ],
+  "testCaseReferences": [],
+  "environments": [],
+  "commonScripts": [],
+  "databaseConnections": [],
+  "globalVariables": [],
+  "commonParameters": null,
+  "projectSetting": {
+    "id": "6426408",
+    "auth": {},
+    "securityScheme": {},
+    "servers": [
+      {
+        "id": "default",
+        "name": "默认服务"
+      }
+    ],
+    "gateway": [],
+    "language": "zh-CN",
+    "apiStatuses": [
+      "developing",
+      "testing",
+      "released",
+      "deprecated"
+    ],
+    "mockSettings": {},
+    "preProcessors": [],
+    "postProcessors": [],
+    "advancedSettings": {
+      "enableJsonc": false,
+      "enableBigint": false,
+      "responseValidate": true,
+      "enableTestScenarioSetting": false,
+      "enableYAPICompatScript": false,
+      "isDefaultUrlEncoding": 2,
+      "publishedDocUrlRules": {
+        "defaultRule": "RESOURCE_KEY_ONLY",
+        "resourceKeyStandard": "NEW"
+      }
+    },
+    "initialDisabledMockIds": [],
+    "cloudMock": {
+      "security": "free",
+      "enable": false,
+      "tokenKey": "apifoxToken"
+    }
+  },
+  "customFunctions": [],
+  "projectAssociations": []
+}
