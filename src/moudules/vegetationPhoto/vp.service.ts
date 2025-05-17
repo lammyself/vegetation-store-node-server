@@ -47,6 +47,7 @@ export class VPService {
       api_key: this.moonshotConfig.moonshotKey,
       endpoint: this.moonshotConfig.moonshotApi,
       model_name: this.moonshotConfig.moonshotModel,
+      sse: true,
     };
     const ling = new Ling(chatConfig);
     // 返回工作流
@@ -74,12 +75,14 @@ export class VPService {
       },
     ]);
     console.log('响应中间数据');
-    bot.on('response', ({ uri, delta }) => {
+    bot.on('string-response', (response) => {
       console.log("'bot response', uri, delta");
-      console.log('bot response', uri, delta);
+      console.log('bot response', response);
     });
-    console.log('close');
-    await workflow.close();
+    console.log('object');
+    bot.on('response', (response) => {
+      console.log('bot response-all', response);
+    });
     return Promise.resolve(imgBase64);
   }
 }
